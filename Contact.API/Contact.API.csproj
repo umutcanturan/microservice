@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Contact.API.Messaging\Contact.API.Messaging.csproj" />
+    <ProjectReference Include="..\Contact.API.Messaging\Contact.API.Messaging.csproj" />
   </ItemGroup>
 
 </Project>
