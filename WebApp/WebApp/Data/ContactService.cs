@@ -13,7 +13,7 @@ namespace WebApp.Data
 
         public async Task<List<Contact>> GetContacts()
         {
-            var response = await _httpClient.GetAsync("/contacts");
+            var response = await _httpClient.GetAsync(_httpClient.BaseAddress + "/contacts/getContacts");
 
             if(!response.IsSuccessStatusCode)
             {

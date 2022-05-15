@@ -1,0 +1,42 @@
+﻿@page "/contacts"
+@using Data
+
+@inject ContactService ContactService
+
+<h3>Contacts</h3>
+
+@if (contactList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in contactList)
+            {
+                <tr>
+                    <td>@contact.Id</td>
+                    <td>@contact.Name</td>
+                    <td>@contact.PhoneNumber</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Contact> contactList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        contactList = await ContactService.GetContacts();
+    }
+}

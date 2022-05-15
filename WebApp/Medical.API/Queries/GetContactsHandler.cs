@@ -8,14 +8,20 @@ namespace Medical.API.Queries
 {
     public class GetContactsHandler : IRequestHandler<GetContactsQuery, List<ContactV1>>
     {
+        private static readonly List<ContactV1> contacts = new List<ContactV1>()
+        {
+            new ContactV1() { Id = 1, Name = "Test 1", PhoneNumber = "23131"},
+            new ContactV1() { Id = 2, Name = "Test 2", PhoneNumber = "63445"}
+        };
+
         public GetContactsHandler()
         {
 
         }
 
-        public Task<List<ContactV1>> Handle(GetContactsQuery request, CancellationToken cancellationToken)
+        public async Task<List<ContactV1>> Handle(GetContactsQuery request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return await Task.FromResult(contacts);
         }
     }
 }

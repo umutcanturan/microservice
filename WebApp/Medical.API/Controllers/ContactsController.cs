@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Contact.API.Messaging;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,9 +16,11 @@ namespace Medical.API.Controllers
         }
 
         [HttpGet]
+        [Route("getContacts")]
         public async Task<IActionResult> Get()
         {
-            throw new NotImplementedException();
+            var contacts = await _bus.Send(new GetContactsQuery());
+            return new JsonResult(await Task.FromResult(contacts));
         }
     }
 }
